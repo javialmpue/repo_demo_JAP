@@ -1,0 +1,205 @@
+version: 2
+
+models:
+  - name: ADDRESSES   
+    description: "Tabla de staging de direcciones."
+    columns:
+      - name: ADDRESS_ID
+        description: "Clave primaria de la direccion"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: ZIPCODE
+        description: "Codigo postal"
+        tests:
+          - not_null
+
+      - name: COUNTRY
+        description: "Paises"
+
+      - name: ADDRESS
+        description: "Direccion"
+
+      - name: STATE
+        description: "Estado"
+
+      - name: _FIVETRAN_DELETED
+        description: ""
+
+      - name: _FIVETRAN_SYNCED
+        description: "gt"
+
+
+
+  - name: ORDERITEMS   
+    description: "Tabla de staging de direcciones."
+    columns:
+      - name: order_id
+        description: "Clave primaria del pedido"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: product_id
+        description: "clave primaria del producto"
+        tests:
+          - unique       
+          - not_null
+
+      - name: quantity
+        description: "Cantidad"
+
+      - name: _fivetran_deleted
+        description: "gt"
+
+      - name:  _fivetran_synced
+        description: "gt"
+
+
+
+  - name: ORDER   
+    description: "Tabla de staging de pedidos."
+    columns:
+      - name: order_id
+        description: "Clave primaria del pedido"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: shipping_service
+        description: "metodo de envio"
+        tests:            
+          - not_null
+
+      - name: shipping_cost
+        description: "Gastos de envio"
+
+      - name: address_id
+        description: "Id de ladirección"
+
+      - name:  created_at
+        description: "Cuando se creó"
+
+      - name: promo_id
+        description: "id de la promocion"
+
+      - name: estimated_delivery_at
+        description: "Tiempo estimado para el envio"
+
+      - name: order_cost
+        description: "costo del pedido"
+
+      - name: user_id
+        description: "Id del usuario"
+
+      - name: order_total
+        description: "total"
+
+      - name: delivered_at
+        description: "cuando se envio"
+
+      - name: tracking_id
+        description: "seguimiento del envio"
+
+      - name: status
+        description: "Estado del pedido"
+
+      - name: _fivetran_deleted
+        description: "gt"
+
+      - name: _fivetran_synced
+        description: "gt"
+
+
+
+  - name: PRODUCTS   
+    description: "Tabla de staging de productos."
+    columns:
+      - name: product_id
+        description: "Clave primaria del producto"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: price
+        description: "Precio"
+        tests:            
+          - not_null
+      
+      - name: name
+        description: "Nombre"
+
+      - name:  inventory
+        description: "Inventario"
+
+      - name: _fivetran_deleted
+        description: "gt"
+
+      - name: _fivetran_synced
+        description: "gt"
+
+
+
+
+  - name: PROMOS   
+    description: "Tabla de staging de Promos."
+    columns:
+      - name: promo_id
+        description: "Clave primaria de la promo"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: discount
+        description: "Descuento"
+        tests:            
+          - not_null
+      
+      - name: status
+        description: "Estado"
+
+      - name:  _fivetran_deleted
+        description: "gt"
+
+      - name: _fivetran_synced
+        description: "gt"
+
+
+  - name: USER   
+    description: "Tabla de staging de Usuarios."
+    columns:
+      - name: updated_at
+        description: "Clave primaria de la promo"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: address_id
+        description: "Descuento"
+        tests:            
+          - not_null
+      
+      - name: last_name
+        description: "Estado"
+
+      - name:  created_at
+        description: "gt"
+
+      - name: phone_number
+        description: "gt"
+
+      - name: total_orders
+        description: "total pedido"
+
+      - name: first_name
+        description: "Nombre" 
+
+      - name: email
+        description: "Correo electronico"   
+
+      - name: _fivetran_deleted
+        description: "gt"
+
+      - name: _fivetran_synced
+        description: "gt"

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: budget   
+    description: "Tabla de staging de budget."
+    columns:
+      - name: _row
+        description: "Fila"
+        tests:
+          - unique       # Verifica que no haya IDs duplicados
+          - not_null     # Verifica que no haya nulos
+
+      - name: quantity
+        description: "Cantidad del pedido"
+        tests:
+          - not_null
+
+      - name: budget_month
+        description: "mes del pedido"
+
+      - name: product_id
+        description: "Id del producto"
+
+      - name: _fivetran_synced
+        description: "g"
